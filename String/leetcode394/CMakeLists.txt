@@ -1,0 +1,1 @@
+add_executable(leetcode394 test_decodeString.cpp decodeString.cpp)

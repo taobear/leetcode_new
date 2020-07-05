@@ -1,0 +1,1 @@
+add_executable(leetcode1197 test_minKnightMoves.cpp minKnightMoves.cpp)

@@ -1,0 +1,1 @@
+add_executable(leetcode1055 test_shortestWay.cpp shortestWay.cpp)

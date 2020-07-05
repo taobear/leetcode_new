@@ -1,0 +1,1 @@
+add_executable(leetcode739 test_dailyTemperatures.cpp dailyTemperatures.cpp)

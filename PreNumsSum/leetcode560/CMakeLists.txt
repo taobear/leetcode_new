@@ -1,0 +1,1 @@
+add_executable(leetcode560 test_subarraySum.cpp subarraySum.cpp)

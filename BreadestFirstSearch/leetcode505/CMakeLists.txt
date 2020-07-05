@@ -1,0 +1,1 @@
+add_executable(leetcode505 test_shortestDistance.cpp shortestDistance.cpp)

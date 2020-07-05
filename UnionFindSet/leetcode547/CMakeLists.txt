@@ -1,0 +1,1 @@
+add_executable(leetcode547 test_findCircleNum.cpp findCircleNum.cpp)

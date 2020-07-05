@@ -1,0 +1,3 @@
+add_subdirectory(leetcode15)
+
+add_subdirectory(leetcode152)

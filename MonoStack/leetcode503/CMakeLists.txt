@@ -1,0 +1,1 @@
+add_executable(leetcode503 test_nextGreaterElements.cpp nextGreaterElements.cpp)

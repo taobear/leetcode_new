@@ -1,0 +1,1 @@
+add_executable(leetcode42 test_trap.cpp trap.cpp)

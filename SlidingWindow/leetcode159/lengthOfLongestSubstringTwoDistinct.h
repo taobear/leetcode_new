@@ -1,0 +1,6 @@
+#ifndef __LENGTH_OF_LONGEST_SUB_STRING_TWO_DISTINCT_H_
+#define __LENGTH_OF_LONGEST_SUB_STRING_TWO_DISTINCT_H_
+
+int lengthOfLongestSubstringTwoDistinct(char *s);
+
+#endif

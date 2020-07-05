@@ -1,0 +1,1 @@
+add_executable(leetcode159 test_lengthOfLongestSubstringTwoDistinct.cpp lengthOfLongestSubstringTwoDistinct.cpp)

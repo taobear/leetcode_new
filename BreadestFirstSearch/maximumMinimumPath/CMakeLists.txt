@@ -1,0 +1,1 @@
+add_executable(test_dijkstra_minpath test_dijkstra_minpath.cpp)
