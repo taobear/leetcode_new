@@ -1,0 +1,1 @@
+add_executable(leetcode1231 test_maximizeSweetness.cpp maximizeSweetness.cpp)

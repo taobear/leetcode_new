@@ -1,0 +1,1 @@
+add_executable(Interview0812 test_solveNQueens.cpp solveNQueens.cpp)

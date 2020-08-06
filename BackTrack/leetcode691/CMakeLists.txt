@@ -1,0 +1,3 @@
+add_executable(leetcode691 test_minStickers.cpp minStickers.cpp)
+
+add_executable(leetcode691_dfs test_minStickers_dfsNew.cpp)

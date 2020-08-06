@@ -1,0 +1,1 @@
+add_executable(leetcode410 test_splitArray.cpp splitArray.cpp)

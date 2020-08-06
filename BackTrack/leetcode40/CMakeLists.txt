@@ -1,0 +1,1 @@
+add_executable(leetcode40 test_combinationSum2.cpp combinationSum2.cpp)
