@@ -1,0 +1,1 @@
+add_executable(leetcode1219 test_getMaximumGold.cpp getMaximumGold.cpp)

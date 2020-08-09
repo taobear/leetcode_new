@@ -1,1 +1,1 @@
-add_executable(leetcode40 test_combinationSum2.cpp combinationSum2.cpp)
+add_executable(leetcode40 test_combinationSum2.cpp combinationSum2.cpp ../func_2d_objs.cpp)

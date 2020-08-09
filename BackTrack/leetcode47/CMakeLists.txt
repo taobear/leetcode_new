@@ -1,0 +1,1 @@
+add_executable(leetcode47 test_permuteUnique.cpp permuteUnique.cpp ../func_2d_objs.cpp)

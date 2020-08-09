@@ -1,0 +1,1 @@
+add_executable(leetcode89 test_grayCode.cpp grayCode.cpp)

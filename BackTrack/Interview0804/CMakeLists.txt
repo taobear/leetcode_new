@@ -1,0 +1,1 @@
+add_executable(Interview0804 test_subsets.cpp subsets.cpp ../func_2d_objs.cpp)
