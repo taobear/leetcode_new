@@ -1,0 +1,1 @@
+add_executable(leetcode216 test_combinationSum3.cpp combinationSum3.cpp ../func_2d_objs.cpp)

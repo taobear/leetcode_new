@@ -1,0 +1,1 @@
+add_executable(leetcode1240 test_tilingRectangle.cpp tilingRectangle.cpp)

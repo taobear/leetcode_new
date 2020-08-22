@@ -23,3 +23,5 @@ add_subdirectory(Array)
 add_subdirectory(UnionFindSet)
 
 add_subdirectory(BackTrack)
+
+add_subdirectory(DynamicProgramming)

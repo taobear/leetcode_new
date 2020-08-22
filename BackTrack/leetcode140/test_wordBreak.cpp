@@ -1,48 +1,82 @@
 #include "wordBreak.h"
 
-#include "wordBreak.h"
-#include "../func_2d_objs.h"
+#include <string>
+#include <vector>
+#include <iostream>
 
-#include <stdio.h>
+using namespace std;
 
 void test1()
 {
-    char s[] = "catsanddog";
-    char word1[] = "cat";
-    char word2[] = "cats";
-    char word3[] = "and";
-    char word4[] = "sand";
-    char word5[] = "dog";
+    string s = "catsanddog";
+    string word1 = "cat";
+    string word2 = "cats";
+    string word3 = "and";
+    string word4 = "sand";
+    string word5 = "dog";
 
-    char *wordDict[] = { word1, word2, word3, word4, word5 };
-    int wordDictSize = sizeof(wordDict) / sizeof(*wordDict);
+    vector<string> wordDict = { word1, word2, word3, word4, word5 };
 
-    char **breakWords;
-    int breakWordsSize = 0;
-    breakWords = wordBreak(s, wordDict, wordDictSize, &breakWordsSize);
+    Solution sln;
+    auto result = sln.wordBreak(s, wordDict);
 
-    print_2d_str(breakWords, breakWordsSize);
-    free_2d_str(breakWords, breakWordsSize);
+    cout << "test1(): " << endl;
+    for (auto &str : result) {
+        cout << str << endl;
+    }
+    cout << endl;
 }
 
 void test2()
 {
-    char s[] = "pineapplepenapple";
-    char word1[] = "apple";
-    char word2[] = "pen";
-    char word3[] = "applepen";
-    char word4[] = "pine";
-    char word5[] = "pineapple";
+    string s = "pineapplepenapple";
+    string word1 = "apple";
+    string word2 = "pen";
+    string word3 = "applepen";
+    string word4 = "pine";
+    string word5 = "pineapple";
 
-    char *wordDict[] = {word1, word2, word3, word4, word5};
-    int wordDictSize = sizeof(wordDict) / sizeof(*wordDict);
+    vector<string> wordDict = {word1, word2, word3, word4, word5};
 
-    char **breakWords;
-    int breakWordsSize = 0;
-    breakWords = wordBreak(s, wordDict, wordDictSize, &breakWordsSize);
+    Solution sln;
+    auto result = sln.wordBreak(s, wordDict);
 
-    print_2d_str(breakWords, breakWordsSize);
-    free_2d_str(breakWords, breakWordsSize);
+    cout << "test2(): " << endl;
+    for (auto &str : result) {
+        cout << str << endl;
+    }
+    cout << endl;
+}
+
+void test3()
+{
+    string s = "catsandog";
+
+    vector<string> wordDict = {"cats", "dog", "sand", "and", "cat"};
+
+    Solution sln;
+    auto result = sln.wordBreak(s, wordDict);
+
+    cout << "test3(): " << endl;
+    for (auto &str : result) {
+        cout << str << endl;
+    }
+    cout << endl;
+}
+
+void test4()
+{
+    string s = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; 
+    vector<string> wordDict = {"a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa"};
+
+    Solution sln;
+    auto result = sln.wordBreak(s, wordDict);
+
+    cout << "test4(): " << endl;
+    for (auto &str : result) {
+        cout << str << endl;
+    }
+    cout << endl;
 }
 
 int main(int argc, char **argv)
@@ -50,6 +84,10 @@ int main(int argc, char **argv)
     test1();
 
     test2();
+
+    test3();
+
+    test4();
 
     return 0;
 }
