@@ -1,0 +1,1 @@
+add_executable(leetcode10 test_isMatch.cpp isMatch.cpp)

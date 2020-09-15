@@ -1,0 +1,1 @@
+add_executable(leetcode787 test_findCheapestPrice.cpp findCheapestPrice.cpp)

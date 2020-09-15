@@ -1,0 +1,1 @@
+add_executable(leetcode1458 test_maxDotProduct.cpp maxDotProduct.cpp)

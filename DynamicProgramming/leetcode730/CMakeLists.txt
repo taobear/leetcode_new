@@ -1,0 +1,1 @@
+add_executable(leetcode730 test_countPalindromicSubsequences.cpp countPalindromicSubsequences.cpp)
