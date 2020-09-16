@@ -1,0 +1,1 @@
+add_executable(leetcode321 test_maxNumber.cpp maxNumber.cpp)

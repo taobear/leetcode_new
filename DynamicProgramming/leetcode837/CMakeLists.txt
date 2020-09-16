@@ -1,0 +1,1 @@
+add_executable(leetcode837 test_new21Game.cpp new21Game.cpp)

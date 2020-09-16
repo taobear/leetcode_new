@@ -11,3 +11,9 @@ add_subdirectory(leetcode316)
 add_subdirectory(leetcode402)
 
 add_subdirectory(leetcode730)
+
+add_subdirectory(leetcode321)
+
+add_subdirectory(leetcode787)
+
+add_subdirectory(leetcode837)

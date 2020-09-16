@@ -1,9 +1,16 @@
 #include "findCheapestPrice.h"
 
+#include <stdio.h>
+
 void test1()
 {
     int n = 3;
-    int flights[3][3] = {{0, 1, 100}, {1, 2, 100}, {0, 2, 500}};
+    int flight1[] = {0, 1, 100};
+    int flight2[] = {1, 2, 100};
+    int flight3[] = {0, 2, 500};
+
+    int *flights[] = {flight1, flight2, flight3};
+
     int flightsSize = 3;
     int flightsColSize[] = {3, 3, 3};
     int src = 0, dst = 2, k = 1;
@@ -15,7 +22,11 @@ void test1()
 void test2()
 {
     int n = 3;
-    int flights[3][3] = {{0, 1, 100}, {1, 2, 100}, {0, 2, 500}};
+    int flight1[] = { 0, 1, 100 };
+    int flight2[] = { 1, 2, 100 };
+    int flight3[] = { 0, 2, 500 };
+
+    int* flights[] = { flight1, flight2, flight3 };
     int flightsSize = 3;
     int flightsColSize[] = {3, 3, 3};
     int src = 0, dst = 2, k = 0;
