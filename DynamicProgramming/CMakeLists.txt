@@ -17,3 +17,7 @@ add_subdirectory(leetcode321)
 add_subdirectory(leetcode787)
 
 add_subdirectory(leetcode837)
+
+add_subdirectory(SwordOffer14_II)
+
+add_subdirectory(leetcode964)

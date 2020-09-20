@@ -1,0 +1,1 @@
+add_executable(leetcode403 test_canCross.cpp canCross.cpp)

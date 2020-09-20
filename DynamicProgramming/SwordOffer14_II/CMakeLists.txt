@@ -1,0 +1,1 @@
+add_executable(SwordOffer14_II test_cuttingRope.cpp cuttingRope.cpp)

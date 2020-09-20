@@ -1,0 +1,1 @@
+add_executable(leetcode964 test_leastOpsExpressTarget.cpp leastOpsExpressTarget.cpp)
