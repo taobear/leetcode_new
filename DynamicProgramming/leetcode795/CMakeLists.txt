@@ -1,0 +1,1 @@
+add_executable(leetcode795 test_numSubarrayBoundedMax.cpp numSubarrayBoundedMax.cpp)

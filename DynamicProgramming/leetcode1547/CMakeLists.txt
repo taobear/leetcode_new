@@ -1,0 +1,1 @@
+add_executable(leetcode1547 test_minCost.cpp minCost.cpp)

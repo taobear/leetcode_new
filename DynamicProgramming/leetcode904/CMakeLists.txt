@@ -1,0 +1,1 @@
+add_executable(leetcode904 test_totalFruit.cpp totalFruit.cpp)

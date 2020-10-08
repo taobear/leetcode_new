@@ -1,0 +1,1 @@
+add_executable(leetcode1371 test_findTheLongestSubstring.cpp findTheLongestSubstring.cpp)

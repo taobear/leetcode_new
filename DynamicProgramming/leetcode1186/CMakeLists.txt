@@ -1,0 +1,1 @@
+add_executable(leetcode1186 test_maximumSum.cpp maximumSum.cpp)

@@ -1,0 +1,1 @@
+add_executable(leetcode1310 test_xorQueries.cpp xorQueries.cpp)

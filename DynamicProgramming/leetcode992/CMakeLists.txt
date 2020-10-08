@@ -1,0 +1,1 @@
+add_executable(leetcode992 test_subarraysWithKDistinct.cpp subarraysWithKDistinct.cpp)
