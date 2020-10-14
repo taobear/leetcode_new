@@ -1,0 +1,1 @@
+add_executable(leetcode1444 test_ways.cpp ways.cpp)

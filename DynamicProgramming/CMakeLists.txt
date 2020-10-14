@@ -51,3 +51,5 @@ add_subdirectory(leetcode1049)
 add_subdirectory(leetcode213)
 
 add_subdirectory(leetcode1191)
+
+add_subdirectory(leetcode1444)
