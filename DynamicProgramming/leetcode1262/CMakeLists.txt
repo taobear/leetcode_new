@@ -1,0 +1,1 @@
+add_executable(leetcode1262 test_maxSumDivThree.cpp maxSumDivThree.cpp)

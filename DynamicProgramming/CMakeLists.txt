@@ -43,3 +43,11 @@ add_subdirectory(leetcode1186)
 add_subdirectory(leetcode1310)
 
 add_subdirectory(leetcode1371)
+
+add_subdirectory(leetcode1262)
+
+add_subdirectory(leetcode1049)
+
+add_subdirectory(leetcode213)
+
+add_subdirectory(leetcode1191)

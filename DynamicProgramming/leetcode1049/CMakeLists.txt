@@ -1,0 +1,1 @@
+add_executable(leetcode1049 test_lastStoneWeightII.cpp lastStoneWeightII.cpp)

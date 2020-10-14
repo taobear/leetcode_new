@@ -1,0 +1,1 @@
+add_executable(leetcode1191 test_kConcatenationMaxSum.cpp kConcatenationMaxSum.cpp)
