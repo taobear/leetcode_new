@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#define MOD 1000000007
 
 int ways(char** pizza, int pizzaSize, int k)
 {
@@ -30,9 +31,9 @@ int ways(char** pizza, int pizzaSize, int k)
     for (int i = rows - 1; i >= 0; i--) {
         for (int j = cols - 1; j >= 0; j--) {
             if (maxSumMat[rows][cols] - maxSumMat[rows][j] - maxSumMat[i][cols] + maxSumMat[i][j] > 0) {
-                dp[i][j][0] = 1;
+                dp[0][i][j] = 1;
             } else {
-                dp[i][j][0] = 0;
+                dp[0][i][j] = 0;
             }
         }
     }
@@ -42,19 +43,19 @@ int ways(char** pizza, int pizzaSize, int k)
             for (int j = cols - 1; j >= 0; j--) {
                 dp[h][i][j] = 0;
                 for (int x = i + 1; x < rows; x++) {
-                    if (maxSumMat[x + 1][cols] - maxSumMat[x + 1][j] - maxSumMat[i][cols] + maxSumMat[i][j] > 0) {
-                        dp[h][i][j] += dp[h - 1][x][j];
+                    if (maxSumMat[x][cols] - maxSumMat[x][j] - maxSumMat[i][cols] + maxSumMat[i][j] > 0) {
+                        dp[h][i][j] = (dp[h][i][j] + dp[h - 1][x][j]) % MOD;
                     }
                 }
 
                 for (int y = j + 1; y < cols; y++) {
-                    if (maxSumMat[rows][y + 1] - maxSumMat[i][j + 1] - maxSumMat[rows][j] + maxSumMat[i][j] > 0) {
-                        dp[h][i][j] += dp[h - 1][i][y];
+                    if (maxSumMat[rows][y] - maxSumMat[i][y] - maxSumMat[rows][j] + maxSumMat[i][j] > 0) {
+                        dp[h][i][j] = (dp[h][i][j] + dp[h - 1][i][y]) % MOD;
                     }
                 }
             }
         }
     }
 
-    return dp[k - 1][rows - 1][cols - 1];
+    return dp[k - 1][0][0];
 }

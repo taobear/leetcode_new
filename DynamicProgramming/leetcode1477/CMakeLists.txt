@@ -1,0 +1,1 @@
+add_executable(leetcode1477 test_minSumOfLengths.cpp minSumOfLengths.cpp)
