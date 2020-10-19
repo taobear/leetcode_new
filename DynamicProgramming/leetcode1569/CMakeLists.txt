@@ -1,0 +1,1 @@
+add_executable(leetcode1569 test_numOfWays.cpp numOfWays.cpp)

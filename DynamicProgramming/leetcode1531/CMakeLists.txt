@@ -1,0 +1,1 @@
+add_executable(leetcode1531 test_getLengthOfOptimalCompression.cpp getLengthOfOptimalCompression.cpp)
