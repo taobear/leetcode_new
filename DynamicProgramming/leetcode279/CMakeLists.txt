@@ -1,0 +1,1 @@
+add_executable(leetcode279 test_numSquares.cpp numSquares.cpp)

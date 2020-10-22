@@ -1,0 +1,1 @@
+add_executable(leetcode322 test_coinChange.cpp coinChange.cpp)

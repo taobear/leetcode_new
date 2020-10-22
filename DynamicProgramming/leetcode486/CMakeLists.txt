@@ -1,0 +1,1 @@
+add_executable(leetcode486 test_PredictTheWinner.cpp PredictTheWinner.cpp)

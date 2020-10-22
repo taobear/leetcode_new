@@ -1,0 +1,1 @@
+add_executable(leetcode517 test_findMinMoves.cpp findMinMoves.cpp)
