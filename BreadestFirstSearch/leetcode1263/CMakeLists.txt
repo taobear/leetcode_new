@@ -1,0 +1,1 @@
+add_executable(leetcode1263 test_minPushBox.cpp minPushBox.cpp)
