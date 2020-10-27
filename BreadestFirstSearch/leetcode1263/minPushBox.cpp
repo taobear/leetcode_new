@@ -161,6 +161,10 @@ int minPushBox(char** grid, int gridSize, int* gridColSize)
             continue;
         }
 
+        if (!canReachTarget(grid, gridSize, gridColSize, &box, &start, &player)) {
+            continue;
+        }
+
         BoxPlayer boxPlayer = {box.gridX, box.gridY, at};
         g_boxPlayerQue[g_boxPlayerQueEnd++] = boxPlayer;
         g_boxPlayerTimes[box.gridX][box.gridY][at] = 0;
@@ -179,17 +183,22 @@ int minPushBox(char** grid, int gridSize, int* gridColSize)
             break;
         }
 
+        Player beforePlayer = convertPlayer(&after.box, after.atPos);
         for (PlayerAtPosInt at = PLAYER_AT_LEFT; at != PLAYER_AT_BUTT; at++) {
             if (at == after.atPos) {
                 continue;
             }
 
-            Player player = convertPlayer(&after.box, at);
-            if (!existGrid(grid, gridSize, gridColSize, &player)) {
+            Player afterPlayer = convertPlayer(&after.box, at);
+            if (!existGrid(grid, gridSize, gridColSize, &afterPlayer)) {
                 continue;
             }
 
             if (g_boxPlayerTimes[after.box.gridX][after.box.gridY][at] != -1) {
+                continue;
+            }
+
+            if (!canReachTarget(grid, gridSize, gridColSize, &after.box, &beforePlayer, &afterPlayer)) {
                 continue;
             }
 
