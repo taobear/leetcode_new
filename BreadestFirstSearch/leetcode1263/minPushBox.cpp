@@ -2,6 +2,9 @@
 
 #include <stdlib.h>
 
+#define QUEUE_ADVANCE(id, size) \
+    (id) = ((id) + 1 + (size)) % (size)
+
 #define MAX_GRID_ROW 20
 #define MAX_GRID_COL 20
 
@@ -44,7 +47,7 @@ bool existGrid(char** grid, int gridSize, int* gridColSize, const Position* pos)
 
 Player convertPlayer(const Box* box, const PlayerAtPosInt atPos)
 {
-    const int playerPos[PLAYER_AT_BUTT][2] = {{ 0, -1 }, { 0, 1 }, { -1, 0 }, { 1, 0 }};
+    const int playerPos[PLAYER_AT_BUTT][2] = { { 0, -1 }, { 0, 1 }, { -1, 0 }, { 1, 0 } };
 
     Player rslt;
     rslt.gridX = box->gridX + playerPos[atPos][0];
@@ -54,26 +57,27 @@ Player convertPlayer(const Box* box, const PlayerAtPosInt atPos)
 
 bool canReachTarget(char** grid, int gridSize, int* gridColSize, const Box* box, const Player* src, const Player* dst)
 {
-    int visitedMem[MAX_GRID_ROW][MAX_GRID_COL] = {0};
-    Player playerQue[MAX_GRID_ROW * MAX_GRID_COL];
+    if (grid[dst->gridX][dst->gridY] == '#') {
+        return false;
+    }
+
+    if (src->gridX == dst->gridX && src->gridY == dst->gridY) {
+        return true;
+    }
+
+    int visitedMem[MAX_GRID_ROW][MAX_GRID_COL] = { 0 };
+
     int playerQueBeg = 0;
     int playerQueEnd = 0;
+    Player playerQue[MAX_GRID_ROW * MAX_GRID_COL];
 
-    playerQue[playerQueEnd++] = *src;
+    playerQue[playerQueEnd] = *src;
+    QUEUE_ADVANCE(playerQueEnd, MAX_GRID_ROW * MAX_GRID_COL);
+
     visitedMem[src->gridX][src->gridY] = 1;
     while (playerQueBeg != playerQueEnd) {
-        Player front = playerQue[playerQueBeg++];
-        if (grid[front.gridX][front.gridY] == '#') {
-            continue;
-        }
-
-        if (front.gridX == box->gridX && front.gridY == box->gridY) {
-            continue;
-        }
-
-        if (front.gridX == dst->gridX && front.gridY == dst->gridY) {
-            break;
-        }
+        Player front = playerQue[playerQueBeg];
+        QUEUE_ADVANCE(playerQueBeg, MAX_GRID_ROW * MAX_GRID_COL);
 
         for (PlayerAtPosInt at = PLAYER_AT_LEFT; at != PLAYER_AT_BUTT; at++) {
             Player after = convertPlayer(&front, at);
@@ -85,27 +89,41 @@ bool canReachTarget(char** grid, int gridSize, int* gridColSize, const Box* box,
                 continue;
             }
 
+            if (grid[after.gridX][after.gridY] == '#') {
+                continue;
+            }
+
+            if (after.gridX == box->gridX && after.gridY == box->gridY) {
+                continue;
+            }
+
+            if (after.gridX == dst->gridX && after.gridY == dst->gridY) {
+                return true;
+            }
+
             visitedMem[after.gridX][after.gridY] = 1;
+
+            playerQue[playerQueEnd] = after;
+            QUEUE_ADVANCE(playerQueEnd, MAX_GRID_ROW * MAX_GRID_COL);
         }
     }
 
-    return visitedMem[dst->gridX][dst->gridY];
+    return false;
 }
 
-void pushOneStepBox(const BoxPlayer *before, BoxPlayer *after)
+void pushOneStepBox(const Box* before, const PlayerAtPosInt at, Box* after)
 {
     if (before == NULL || after == NULL) {
         return;
     }
 
-    const int move[PLAYER_AT_BUTT][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    const int move[PLAYER_AT_BUTT][2] = { { 0, 1 }, { 0, -1 }, { 1, 0 }, { -1, 0 } };
 
-    after->box.gridX = before->box.gridX + move[before->atPos][0];
-    after->box.gridY = before->box.gridY + move[before->atPos][1];
-    after->atPos = before->atPos;
+    after->gridX = before->gridX + move[at][0];
+    after->gridY = before->gridY + move[at][1];
 }
 
-void initGameMap(char** grid, int gridSize, int* gridColSize, Box *box, Player *start, Position *target)
+void initGameMap(char** grid, int gridSize, int* gridColSize, Box* box, Player* start, Position* target)
 {
     if (box == NULL || start == NULL || target == NULL) {
         return;
@@ -128,9 +146,6 @@ void initGameMap(char** grid, int gridSize, int* gridColSize, Box *box, Player *
 }
 
 BoxPlayer g_boxPlayerQue[MAX_GRID_ROW * MAX_GRID_COL * PLAYER_AT_BUTT];
-int g_boxPlayerQueBeg = 0;
-int g_boxPlayerQueEnd = 0;
-
 int g_boxPlayerTimes[MAX_GRID_ROW][MAX_GRID_COL][PLAYER_AT_BUTT];
 
 void initBoxPlayer(char** grid, int gridSize, int* gridColSize)
@@ -153,8 +168,8 @@ int minPushBox(char** grid, int gridSize, int* gridColSize)
     initGameMap(grid, gridSize, gridColSize, &box, &start, &target);
     initBoxPlayer(grid, gridSize, gridColSize);
 
-    g_boxPlayerQueBeg = 0;
-    g_boxPlayerQueEnd = 0;
+    int boxPlayerQueBeg = 0;
+    int boxPlayerQueEnd = 0;
     for (PlayerAtPosInt at = PLAYER_AT_LEFT; at != PLAYER_AT_BUTT; at++) {
         Player player = convertPlayer(&box, at);
         if (!existGrid(grid, gridSize, gridColSize, &player)) {
@@ -165,53 +180,53 @@ int minPushBox(char** grid, int gridSize, int* gridColSize)
             continue;
         }
 
-        BoxPlayer boxPlayer = {box.gridX, box.gridY, at};
-        g_boxPlayerQue[g_boxPlayerQueEnd++] = boxPlayer;
+        BoxPlayer boxPlayer = { box.gridX, box.gridY, at };
+        g_boxPlayerQue[boxPlayerQueEnd] = boxPlayer;
+        QUEUE_ADVANCE(boxPlayerQueEnd, MAX_GRID_ROW * MAX_GRID_COL * PLAYER_AT_BUTT);
+
         g_boxPlayerTimes[box.gridX][box.gridY][at] = 0;
     }
 
-    while (g_boxPlayerQueBeg != g_boxPlayerQueEnd) {
-        BoxPlayer front = g_boxPlayerQue[g_boxPlayerQueBeg++];
-        BoxPlayer after;
+    while (boxPlayerQueBeg != boxPlayerQueEnd) {
+        BoxPlayer front = g_boxPlayerQue[boxPlayerQueBeg];
+        QUEUE_ADVANCE(boxPlayerQueBeg, MAX_GRID_ROW * MAX_GRID_COL * PLAYER_AT_BUTT);
 
-        pushOneStepBox(&front, &after);
-        if (!existGrid(grid, gridSize, gridColSize, &after.box)) {
+        Box afterBox;
+        pushOneStepBox(&front.box, front.atPos, &afterBox);
+        if (!existGrid(grid, gridSize, gridColSize, &afterBox)) {
             continue;
         }
 
-        if (after.box.gridX == target.gridX && after.box.gridY == target.gridY) {
-            break;
+        if (grid[afterBox.gridX][afterBox.gridY] == '#') {
+            continue;
         }
 
-        Player beforePlayer = convertPlayer(&after.box, after.atPos);
-        for (PlayerAtPosInt at = PLAYER_AT_LEFT; at != PLAYER_AT_BUTT; at++) {
-            if (at == after.atPos) {
-                continue;
-            }
+        if (afterBox.gridX == target.gridX && afterBox.gridY == target.gridY) {
+            return g_boxPlayerTimes[front.box.gridX][front.box.gridY][front.atPos] + 1;
+        }
 
-            Player afterPlayer = convertPlayer(&after.box, at);
+        Player beforePlayer = convertPlayer(&afterBox, front.atPos);
+        for (PlayerAtPosInt at = PLAYER_AT_LEFT; at != PLAYER_AT_BUTT; at++) {
+            Player afterPlayer = convertPlayer(&afterBox, at);
             if (!existGrid(grid, gridSize, gridColSize, &afterPlayer)) {
                 continue;
             }
 
-            if (g_boxPlayerTimes[after.box.gridX][after.box.gridY][at] != -1) {
+            if (g_boxPlayerTimes[afterBox.gridX][afterBox.gridY][at] != -1) {
                 continue;
             }
 
-            if (!canReachTarget(grid, gridSize, gridColSize, &after.box, &beforePlayer, &afterPlayer)) {
+            if (!canReachTarget(grid, gridSize, gridColSize, &afterBox, &beforePlayer, &afterPlayer)) {
                 continue;
             }
 
-            BoxPlayer boxPlayer = { after.box.gridX, after.box.gridY, at };
-            g_boxPlayerQue[g_boxPlayerQueEnd++] = boxPlayer;
-            g_boxPlayerTimes[after.box.gridX][after.box.gridY][at] = g_boxPlayerTimes[front.box.gridX][front.box.gridY][at] + 1;
+            BoxPlayer boxPlayer = { afterBox.gridX, afterBox.gridY, at };
+            g_boxPlayerQue[boxPlayerQueEnd] = boxPlayer;
+            QUEUE_ADVANCE(boxPlayerQueEnd, MAX_GRID_ROW * MAX_GRID_COL * PLAYER_AT_BUTT);
+
+            g_boxPlayerTimes[afterBox.gridX][afterBox.gridY][at] = g_boxPlayerTimes[front.box.gridX][front.box.gridY][front.atPos] + 1;
         }
     }
 
-    for (PlayerAtPosInt at = PLAYER_AT_LEFT; at != PLAYER_AT_BUTT; at++) {
-        if (g_boxPlayerTimes[target.gridX][target.gridY][at] != -1) {
-            return g_boxPlayerTimes[target.gridX][target.gridY][at];
-        }
-    }
     return -1;
 }
