@@ -65,3 +65,11 @@ add_subdirectory(leetcode279)
 add_subdirectory(leetcode517)
 
 add_subdirectory(leetcode486)
+
+add_subdirectory(leetcode300)
+
+add_subdirectory(leetcode918)
+
+add_subdirectory(Interview1724)
+
+add_subdirectory(leetcode363)

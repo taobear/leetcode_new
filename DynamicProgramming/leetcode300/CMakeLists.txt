@@ -1,0 +1,1 @@
+add_executable(leetcode300 test_lengthOfLIS.cpp lengthOfLIS.cpp)

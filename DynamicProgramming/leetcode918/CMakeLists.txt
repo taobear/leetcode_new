@@ -1,0 +1,1 @@
+add_executable(leetcode918 test_maxSubarraySumCircular.cpp maxSubarraySumCircular.cpp)

@@ -1,0 +1,1 @@
+add_executable(leetcode1388 test_maxSizeSlices.cpp maxSizeSlices.cpp)

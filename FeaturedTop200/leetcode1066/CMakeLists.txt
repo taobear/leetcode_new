@@ -1,0 +1,1 @@
+add_executable(leetcode1066 test_assignBikes.cpp assignBikes.cpp)
