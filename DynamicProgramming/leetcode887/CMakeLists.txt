@@ -1,0 +1,1 @@
+add_executable(leetcode887 test_superEggDrop.cpp superEggDrop.cpp)

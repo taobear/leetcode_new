@@ -1,0 +1,1 @@
+add_executable(leetcode801 test_minSwap.cpp minSwap.cpp)

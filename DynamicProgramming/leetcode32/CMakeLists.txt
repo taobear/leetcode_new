@@ -1,0 +1,1 @@
+add_executable(leetcode32 test_longestValidParentheses.cpp longestValidParentheses.cpp)

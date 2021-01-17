@@ -1,0 +1,1 @@
+add_executable(leetcode132 test_minCut.cpp minCut.cpp)

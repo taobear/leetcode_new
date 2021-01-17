@@ -1,0 +1,1 @@
+add_executable(leetcode975 test_oddEvenJumps.cpp oddEvenJumps.cpp)

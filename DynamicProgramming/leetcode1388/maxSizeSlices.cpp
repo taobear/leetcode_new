@@ -1,6 +1,11 @@
 #include "maxSizeSlices.h"
 
-int maxSizeSlices(int* slices, int slicesSize)
+int getMaxSize(int *slices, int slicesSize)
 {
     
+}
+
+int maxSizeSlices(int* slices, int slicesSize)
+{
+
 }

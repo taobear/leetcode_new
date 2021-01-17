@@ -73,3 +73,27 @@ add_subdirectory(leetcode918)
 add_subdirectory(Interview1724)
 
 add_subdirectory(leetcode363)
+
+add_subdirectory(leetcode32)
+
+add_subdirectory(leetcode132)
+
+add_subdirectory(leetcode583)
+
+add_subdirectory(leetcode801)
+
+add_subdirectory(leetcode871)
+
+add_subdirectory(leetcode813)
+
+add_subdirectory(leetcode887)
+
+add_subdirectory(leetcode256)
+
+add_subdirectory(leetcode265)
+
+add_subdirectory(leetcode975)
+
+add_subdirectory(leetcode1478)
+
+add_subdirectory(leetcode1230)

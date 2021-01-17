@@ -1,5 +1,7 @@
 #include "maxSumSubmatrix.h"
 
+#include <stdlib.h>
+
 int getMaxSumArr(int* arr, int arrSize, int* start, int* end)
 {
     int maxSum = INT_MIN;

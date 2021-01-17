@@ -1,0 +1,1 @@
+add_executable(leetcode813 test_largestSumOfAverages.cpp largestSumOfAverages.cpp)

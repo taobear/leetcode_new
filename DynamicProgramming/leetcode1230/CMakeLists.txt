@@ -1,0 +1,1 @@
+add_executable(leetcode1230 test_probablityOfHeads.cpp probabilityOfHeads.cpp)

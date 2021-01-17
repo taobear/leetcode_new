@@ -1,0 +1,1 @@
+add_executable(leetcode583 test_minDistance.cpp minDistance.cpp)

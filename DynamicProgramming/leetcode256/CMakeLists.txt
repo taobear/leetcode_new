@@ -1,0 +1,1 @@
+add_executable(leetcode256 test_minCost.cpp minCost.cpp)

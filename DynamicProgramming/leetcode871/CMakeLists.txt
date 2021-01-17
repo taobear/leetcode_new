@@ -1,0 +1,1 @@
+add_executable(leetcode871 test_minRefuelStops.cpp minRefuelStops.cpp)
