@@ -97,3 +97,5 @@ add_subdirectory(leetcode975)
 add_subdirectory(leetcode1478)
 
 add_subdirectory(leetcode1230)
+
+add_subdirectory(leetcode943)

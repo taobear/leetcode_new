@@ -1,0 +1,1 @@
+add_executable(leetcode943 test_shortestSuperstring.cpp shortestSuperstring.cpp)
